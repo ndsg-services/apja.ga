@@ -37,3 +37,18 @@
     document.querySelectorAll('.has-sub.open').forEach(function(li){li.classList.remove('open');var t=li.querySelector('.sub-toggle');t.setAttribute('aria-expanded','false');t.focus();});
   });
 })();
+// « Lire la suite » : le texte reste visible si JavaScript est désactivé
+(function(){
+  var btns=document.querySelectorAll('.read-more');
+  if(!btns.length)return;
+  document.documentElement.classList.add('js');
+  btns.forEach(function(b){
+    var box=document.getElementById(b.getAttribute('aria-controls'));
+    b.hidden=false;
+    b.addEventListener('click',function(){
+      var open=box.classList.toggle('open');
+      b.setAttribute('aria-expanded',open?'true':'false');
+      b.textContent=open?'Réduire':'Lire la suite';
+    });
+  });
+})();
