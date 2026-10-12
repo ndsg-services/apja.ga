@@ -13,3 +13,11 @@ index · historique · sem-gew · a-propos · partenaires · adhesion · galerie
 ## Mise en ligne (O2switch)
 Envoyer tout le contenu du dépôt à la racine du domaine, y compris le fichier `.htaccess` (avec le point).
 Le `.htaccess` force https + www et redirige les anciennes adresses Wix vers les nouvelles pages.
+
+
+## Version 3 – rubriques APJA
+- Publications (Rapports d’activités et Livre blanc) : documents en attente.
+- IML et Entreprises : pages de présentation en attente de contenu validé.
+- Chaîne WhatsApp APJA ajoutée dans le pied de page.
+- Galerie V2 et typographie ajustée conservées.
+- La messagerie @apja.ga n'est pas encore configurée.
