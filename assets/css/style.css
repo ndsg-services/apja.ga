@@ -319,3 +319,34 @@ h3{font-size:1.08rem}
 .read-more:hover{color:var(--blue-dark);text-decoration:underline}
 .alt-text > p:first-child{margin-bottom:.6em}
 .js .more-text.open p:last-child{margin-bottom:.6em}
+
+/* Apéro Networking */
+.infos-box{background:var(--mist);border-radius:var(--radius);padding:28px;border-top:6px solid var(--blue)}
+.infos-box h2{margin-top:0}
+.next-edition{display:grid;grid-template-columns:minmax(0,320px) 1fr;gap:48px;align-items:center}
+.next-poster img,.edition-poster img{border-radius:var(--radius);box-shadow:0 10px 30px rgba(0,0,0,.12);width:100%}
+.next-speaker{font-size:1.05rem}
+.edition-theme{font-style:italic;color:var(--grey)}
+.editions{list-style:none;margin:28px 0 0;padding:0;display:grid;grid-template-columns:repeat(auto-fill,minmax(230px,1fr));gap:32px 24px}
+.edition-info{padding-top:14px}
+.edition-date{font-size:.88rem;font-weight:700;color:var(--green-dark);margin:0 0 4px}
+.edition h3{margin:0 0 2px}
+.edition-role{font-size:.92rem;margin:0 0 8px}
+.edition .edition-theme{font-size:.92rem;margin:0}
+.edition-poster img{transition:transform .2s}
+.edition-poster:hover img{transform:translateY(-3px)}
+@media (max-width:760px){.next-edition{grid-template-columns:1fr;gap:24px}.next-poster img{max-width:280px}}
+
+/* Fenêtre « affiche événement » (accueil) */
+.promo{position:fixed;inset:0;z-index:1000;background:rgba(10,12,16,.72);display:flex;align-items:center;justify-content:center;padding:20px}
+.promo[hidden]{display:none}
+.promo-box{position:relative;background:#fff;border-radius:10px;padding:12px;max-width:min(440px,92vw);box-shadow:0 20px 60px rgba(0,0,0,.35);text-align:center}
+.promo-box img{max-height:calc(100vh - 170px);width:auto;max-width:100%;margin:0 auto;border-radius:6px}
+.promo-cta{margin-top:12px;width:100%}
+.promo-close{position:absolute;top:-14px;right:-14px;width:38px;height:38px;border-radius:50%;border:0;background:#fff;color:var(--ink);font-size:24px;line-height:1;cursor:pointer;box-shadow:0 4px 14px rgba(0,0,0,.25)}
+.promo-close:hover{background:var(--mist)}
+.promo-timer{height:4px;background:var(--line);border-radius:2px;margin-top:10px;overflow:hidden}
+.promo-timer span{display:block;height:100%;width:100%;background:var(--green);transform-origin:left;animation:promo-countdown linear forwards;animation-duration:var(--promo-duration,10s)}
+@keyframes promo-countdown{from{transform:scaleX(1)}to{transform:scaleX(0)}}
+@media (max-width:480px){.promo-close{top:-10px;right:-6px}}
+@media (prefers-reduced-motion:reduce){.promo-timer span{animation:none}}

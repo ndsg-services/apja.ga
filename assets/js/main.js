@@ -52,3 +52,20 @@
     });
   });
 })();
+// Affiche événement sur l'accueil : s'ouvre au chargement, se ferme après N secondes
+(function(){
+  var p=document.getElementById('promo'); if(!p)return;
+  var until=p.dataset.until; if(until&&new Date()>new Date(until))return; // événement passé : rien ne s'affiche
+  var secs=parseInt(p.dataset.duration||'10',10),timer,last=document.activeElement;
+  function close(){p.hidden=true;clearTimeout(timer);document.removeEventListener('keydown',onKey);if(last&&last.focus)last.focus();}
+  function onKey(e){if(e.key==='Escape')close();}
+  setTimeout(function(){
+    p.style.setProperty('--promo-duration',secs+'s');
+    p.hidden=false;
+    p.querySelector('.promo-close').focus({preventScroll:true});
+    document.addEventListener('keydown',onKey);
+    timer=setTimeout(close,secs*1000);
+  },800);
+  p.querySelector('.promo-close').addEventListener('click',close);
+  p.addEventListener('click',function(e){if(e.target===p)close();});
+})();
