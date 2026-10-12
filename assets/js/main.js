@@ -69,3 +69,30 @@
   p.querySelector('.promo-close').addEventListener('click',close);
   p.addEventListener('click',function(e){if(e.target===p)close();});
 })();
+// Apéro Networking : tri automatique selon la date (data-end = fin de l'événement)
+// - la prochaine édition à venir s'affiche dans « Prochaine édition »
+// - les éditions passées restent dans la liste, de la plus récente à la plus ancienne
+// - s'il n'y a aucune édition à venir, la section « Prochaine édition » est masquée
+(function(){
+  var list=document.getElementById('editions'),next=document.getElementById('prochaine-edition');
+  if(!list||!next)return;
+  var now=new Date(),items=[].slice.call(list.querySelectorAll('.edition[data-end]'));
+  var future=items.filter(function(li){return new Date(li.dataset.end)>now;})
+                  .sort(function(a,b){return new Date(a.dataset.end)-new Date(b.dataset.end);});
+  var past=items.filter(function(li){return new Date(li.dataset.end)<=now;})
+                .sort(function(a,b){return new Date(b.dataset.end)-new Date(a.dataset.end);});
+  past.forEach(function(li){list.appendChild(li);});
+  future.forEach(function(li){li.remove();});
+  if(!future.length){next.hidden=true;return;}
+  next.hidden=false;
+  var e=future[0],q=function(sel){return e.querySelector(sel);};
+  var a=next.querySelector('.next-poster'),img=a.querySelector('img');
+  a.href=q('.edition-poster').getAttribute('href');
+  img.src=q('.edition-poster img').getAttribute('src');
+  img.alt=q('.edition-poster img').getAttribute('alt');
+  next.querySelector('.next-date').textContent=q('.edition-date').textContent+', 18h–21h';
+  next.querySelector('.next-speaker').innerHTML='<strong></strong><br>';
+  next.querySelector('.next-speaker strong').textContent=q('h3').textContent;
+  next.querySelector('.next-speaker').appendChild(document.createTextNode(q('.edition-role').textContent));
+  next.querySelector('.next-theme').textContent=q('.edition-theme').textContent;
+})();
