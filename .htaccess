@@ -1,0 +1,45 @@
+# APJA — www.apja.ga
+Options -Indexes
+RewriteEngine On
+
+# HTTPS + www
+RewriteCond %{HTTPS} off [OR]
+RewriteCond %{HTTP_HOST} !^www\. [NC]
+RewriteRule ^(.*)$ https://www.apja.ga/$1 [L,R=301]
+
+# Anciennes adresses Wix -> nouvelles pages (conservation du référencement)
+RedirectMatch 301 ^/copy-of-sem-gew/?$          /historique.html
+RedirectMatch 301 ^/copy-of-bureau/?$           /historique.html#presidents
+RedirectMatch 301 ^/copy-of-sem-gew-2025-1/?$   /sem-gew.html
+RedirectMatch 301 ^/copy-of-documents/?$        /sem-gew.html#edition-2025
+RedirectMatch 301 ^/a-propos-de-nous/?$         /a-propos.html
+RedirectMatch 301 ^/documents/?$                /a-propos.html#bureau
+RedirectMatch 301 ^/partenaires/?$              /partenaires.html
+RedirectMatch 301 ^/adhesion/?$                 /adhesion.html
+RedirectMatch 301 ^/copy-of-adhesion/?$         /adhesion.html#cotisations
+RedirectMatch 301 ^/copy-of-cotisations-1/?$    /adhesion.html#donations
+RedirectMatch 301 ^/galerie/?$                  /galerie.html
+RedirectMatch 301 ^/_files/ugd/3d9c1e_cb07f666eb794d16897c503f283d4a57\.pdf$ /docs/statuts-apja.pdf
+RedirectMatch 301 ^/_files/ugd/3d9c1e_95a440f84e0b4338a8f7030da4cdc526\.pdf$ /docs/reglement-interieur-apja.pdf
+RedirectMatch 301 ^/_files/ugd/3d9c1e_6aca1a8e137f4aa69db26a20fcdd4c3e\.pdf$ /docs/recepisse-definitif-apja.pdf
+
+ErrorDocument 404 /404.html
+
+# Cache des fichiers statiques
+<IfModule mod_expires.c>
+  ExpiresActive On
+  ExpiresByType image/webp "access plus 1 month"
+  ExpiresByType image/png "access plus 1 month"
+  ExpiresByType image/jpeg "access plus 1 month"
+  ExpiresByType text/css "access plus 1 week"
+  ExpiresByType application/javascript "access plus 1 week"
+  ExpiresByType application/pdf "access plus 1 month"
+</IfModule>
+<IfModule mod_deflate.c>
+  AddOutputFilterByType DEFLATE text/html text/css application/javascript image/svg+xml
+</IfModule>
+<IfModule mod_headers.c>
+  Header always set X-Content-Type-Options "nosniff"
+  Header always set X-Frame-Options "SAMEORIGIN"
+  Header always set Referrer-Policy "strict-origin-when-cross-origin"
+</IfModule>
