@@ -18,3 +18,22 @@
     if(q==='erreur'){box.className='alert alert-err';box.textContent="Le message n'a pas pu être envoyé. Vérifiez les champs obligatoires ou écrivez-nous sur WhatsApp.";box.hidden=false;}
   }
 })();
+// Sous-menu « Ressources »
+(function(){
+  document.querySelectorAll('.sub-toggle').forEach(function(b){
+    b.addEventListener('click',function(e){
+      e.stopPropagation();
+      var li=b.parentElement,open=li.classList.toggle('open');
+      b.setAttribute('aria-expanded',open?'true':'false');
+    });
+  });
+  document.addEventListener('click',function(e){
+    document.querySelectorAll('.has-sub.open').forEach(function(li){
+      if(!li.contains(e.target)){li.classList.remove('open');li.querySelector('.sub-toggle').setAttribute('aria-expanded','false');}
+    });
+  });
+  document.addEventListener('keydown',function(e){
+    if(e.key!=='Escape')return;
+    document.querySelectorAll('.has-sub.open').forEach(function(li){li.classList.remove('open');var t=li.querySelector('.sub-toggle');t.setAttribute('aria-expanded','false');t.focus();});
+  });
+})();
