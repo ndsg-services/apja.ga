@@ -217,3 +217,42 @@ p + h2{margin-top:1.6em}
 .banners img{width:100%;height:100%;object-fit:cover;border-radius:var(--radius)}
 @media (max-width:760px){.banners{grid-template-columns:1fr}}
 .banners{align-items:start}.banners img{height:auto;object-fit:contain}
+
+/* Typographie et espacements ajustes pour APJA */
+body{font-size:16px;line-height:1.6}
+h1{font-size:clamp(2.25rem,4.4vw,3.2rem)}
+h2{font-size:clamp(1.6rem,2.7vw,2.15rem)}
+h3{font-size:1.14rem}
+.lead{font-size:1.06rem}
+.hero{padding:62px 0 70px}
+.hero h1{max-width:13ch}
+.page-head{padding:44px 0 28px}
+.page-head h1{font-size:clamp(2rem,3.8vw,2.8rem)}
+section{padding:58px 0}
+@media(max-width:860px){section{padding:42px 0}.hero{padding:42px 0}}
+.album-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:22px;margin-top:26px}
+.album-card{display:block;border:1px solid var(--line);border-radius:10px;overflow:hidden;text-decoration:none;color:var(--ink);background:white;transition:transform .2s,box-shadow .2s}
+.album-card:hover{transform:translateY(-3px);box-shadow:0 8px 24px #00000012;color:var(--ink)}
+.album-card img{width:100%;aspect-ratio:4/3;object-fit:cover}
+.album-card-body{padding:17px 19px}.album-card h2{font-size:1.3rem;margin:0 0 6px}.album-card p{color:var(--grey);font-size:.94rem;margin:0}
+.album-photos{display:grid;grid-template-columns:repeat(auto-fill,minmax(175px,1fr));gap:12px;margin-top:26px}
+.album-photos button{border:0;padding:0;cursor:pointer;background:var(--mist);border-radius:7px;overflow:hidden;aspect-ratio:4/3}
+.album-photos img{width:100%;height:100%;object-fit:cover;transition:transform .2s}
+.album-photos button:hover img{transform:scale(1.04)}
+.album-more{display:block;margin:24px auto 0}
+.lightbox{position:fixed;inset:0;background:rgba(0,0,0,.94);z-index:1000;display:none;align-items:center;justify-content:center;flex-direction:column;padding:50px 60px}
+.lightbox.open{display:flex}.lightbox img{max-height:calc(100vh - 125px);max-width:100%;object-fit:contain}
+.lightbox button{position:absolute;border:0;background:#ffffff22;color:white;cursor:pointer;font-size:25px;padding:8px 15px;border-radius:6px}
+.lightbox .close{top:12px;right:15px}.lightbox .prev{left:10px;top:50%}.lightbox .next{right:10px;top:50%}
+.lightbox .counter{color:#fff;margin-top:12px;font-size:14px}
+@media(max-width:600px){.album-photos{grid-template-columns:repeat(2,1fr);gap:8px}.lightbox{padding:55px 35px}.album-grid{grid-template-columns:1fr}}
+
+/* Rubriques APJA V3 */
+.resource-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:24px;max-width:1000px}
+.resource-card{display:block;text-decoration:none;color:var(--ink);padding:30px;border:1px solid var(--line);border-radius:12px;background:#fff;transition:box-shadow .2s,transform .2s}
+.resource-card:hover{box-shadow:0 10px 25px #00000012;transform:translateY(-2px);color:var(--ink)}
+.resource-card h2{font-size:1.45rem;margin:12px 0}.resource-card p{color:var(--grey)}
+.resource-icon{font-size:2rem;color:var(--green-dark)}.resource-link{color:var(--blue);font-weight:700}
+.resource-empty{max-width:760px;border:1px solid var(--line);border-left:5px solid var(--green);background:var(--mist);padding:32px;border-radius:8px;margin-top:24px}
+.resource-empty h2{font-size:1.4rem}.resource-empty p{margin-bottom:0}
+@media(max-width:680px){.resource-grid{grid-template-columns:1fr}.resource-card{padding:22px}.resource-empty{padding:22px}}
