@@ -210,3 +210,4 @@ p + h2{margin-top:1.6em}
 @media (max-width:1080px){.menu-toggle{display:inline-flex}}
 @media (max-width:860px){.triangles{max-width:150px}}
 @media (max-width:420px){.brand img{height:44px}.brand span{font-size:.85rem}}
+.gallery-square img{aspect-ratio:1/1}
